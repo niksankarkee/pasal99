@@ -5,7 +5,8 @@ const bodyParser = require('body-parser');
 const app = express();
 
 // Routes
-const authRoutes  = require('./routes/auth');
+const authRoutes = require('./routes/auth');
+const adminRoutes = require('./routes/admin/auth');
 
 // Environement variable or you can say constants
 env.config();
@@ -28,6 +29,7 @@ mongoose.connect(
 app.use(bodyParser());
 
 app.use('/api', authRoutes);
+app.use('/api', adminRoutes);
 
 
 app.listen(process.env.PORT, () => {
